@@ -15,6 +15,8 @@ import com.memo.post.model.Post;
 public class PostBO {
 	@Autowired
 	private PostDAO postdao;
+	
+	@Autowired
 	private FileManagerService filemanagerservice;
 	
 	public List<Post> getList(Integer userId) {
@@ -22,8 +24,6 @@ public class PostBO {
 	}
 	
 	public int createPost(String loginId, int userId, String subject, String content, MultipartFile file) {
-		// content 줄바꿈 적용
-		content = content.replace("\n", "<br>");
 		
 		String imagePath = null;
 		if (file != null) {
