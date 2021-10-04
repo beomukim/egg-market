@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.memo.post.bo.PostBO;
 
 @RestController
+@RequestMapping("/post")
 public class PostRestController {
 	@Autowired
 	private PostBO postBO;
