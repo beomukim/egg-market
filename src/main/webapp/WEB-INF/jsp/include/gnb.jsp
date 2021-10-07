@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <%-- d-flex와 justify-content-between: logo와 로그인 정보를 양쪽 끝으로 떨어뜨린다. --%>
-<div class="header bg-secondary d-flex justify-content-between mb-5">
+<div class="header bg-info d-flex justify-content-between mb-5">
 	<div class="logo">
 		<h1 class="text-white p-4 font-weight-bold">메모 게시판</h1>
 	</div>
