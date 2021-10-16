@@ -1,13 +1,13 @@
-package com.memo;
+package com.untitled;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MemoApplication {
+public class UntitledApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MemoApplication.class, args);
+		SpringApplication.run(UntitledApplication.class, args);
 	}
 
 }

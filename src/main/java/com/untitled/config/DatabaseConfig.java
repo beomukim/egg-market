@@ -1,4 +1,4 @@
-package com.memo.config;
+package com.untitled.config;
 
 import javax.sql.DataSource;
 
@@ -11,10 +11,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages="com.memo.*")  // interface(mapper)가 있는 패키지 경로
+@MapperScan(basePackages="com.untitled.*")
 public class DatabaseConfig {
-
-    @Bean
+	@Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);

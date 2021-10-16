@@ -1,4 +1,4 @@
-package com.memo.common;
+package com.untitled.common;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
