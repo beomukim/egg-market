@@ -1,0 +1,7 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+.layer {color:#2ECC71}
+.basic {font-family: 'Jeju Gothic', sans-serif; }
+#logo {font-size:2rem;}
+.bg {height:400px; background-color:#1CEF70; background-image:url("https://media.istockphoto.com/photos/easter-egg-hunt-picture-id534851079?b=1&k=20&m=534851079&s=170667a&w=0&h=jiodZYSqqrbsW8lyy2LU4Q0S9AdjGbKeCeXzXGyxBCk=");
+color:#ECF6F1}
