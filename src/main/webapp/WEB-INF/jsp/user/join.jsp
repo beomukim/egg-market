@@ -67,6 +67,8 @@
 		</form>
 	</div>
 </div>
+
+
 <script>
 $(document).ready(function() {
 	
@@ -176,6 +178,7 @@ $(document).ready(function() {
 		
 		
 		var formData = new FormData(); // form 객체를 만든다. form 자체와는 달라서 seralize 안해도 된다.
+		formData.append("loginId", loginId);
 		formData.append("password", password);
 		formData.append("nickname", nickname);
 		formData.append("address", address);
