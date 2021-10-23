@@ -39,14 +39,14 @@ public class UserRestController {
 		public Map<String, Object> signup(
 				@RequestParam("loginId") String loginId,
 				@RequestParam("password") String password,
-				@RequestParam("nickname") String nickname,
+				@RequestParam("nickName") String nickName,
 				@RequestParam("address") String address,
 				@RequestParam(value="email", required = false) String email,
 				@RequestParam(value = "file", required = false) MultipartFile file) {
 
 
 		String encryptPassword = EncryptUtils.md5(password);
-		int row = userBO.insertUser(loginId, encryptPassword, nickname, address, email, file);
+		int row = userBO.insertUser(loginId, encryptPassword, nickName, address, email, file);
 		
 		Map<String, Object> result = new HashMap<>();
 		if (row == 1) {
@@ -72,7 +72,7 @@ public class UserRestController {
 			// 로그인 처리 - 세션에 저장(로그인 상태를 유지한다)
 			HttpSession session = request.getSession();
 			session.setAttribute("userLoginId", user.getLoginId());
-			session.setAttribute("userName", user.getNickname());	
+			session.setAttribute("userName", user.getNickName());	
 			session.setAttribute("userId", user.getId());	
 		} else {
 			result.put("error", "입력 실패");

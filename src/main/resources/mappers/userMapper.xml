@@ -17,7 +17,7 @@
 		(
 			`loginId`
 			, `password`
-			, `nickname`
+			, `nickName`
 			, `address`
 			, `email`
 			, `imagePath`
@@ -28,7 +28,7 @@
 		(
 			#{loginId}
 			, #{password}
-			, #{nickname}
+			, #{nickName}
 			, #{address}
 			, #{email}
 			, #{imagePath}
@@ -41,7 +41,7 @@
 			`id` 
 			,`loginId`
 			, `password`
-			, `nickname`
+			, `nickName`
 			, `address`
 			, `imagePath`
 			, `email`

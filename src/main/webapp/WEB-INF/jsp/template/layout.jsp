@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-	<div id="wrap" class="basic">
+	<div id="wrap" class="basic container">
 		<header class="layer">
 			<jsp:include page="../include/gnb.jsp" />
 		</header>

@@ -4,7 +4,7 @@ public class User {
 	private int id;
 	private String loginId;
 	private String password;
-	private String nickname;
+	private String nickName;
 	private String address;
 	private String imagePath;
 	private String email;
@@ -26,11 +26,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getNickName() {
+		return nickName;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	public String getAddress() {
 		return address;

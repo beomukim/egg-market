@@ -26,7 +26,7 @@ public class UserBO {
 		return userDAO.existLoginId(loginId);
 	}
 	
-	public int insertUser(String loginId, String password, String nickname, String address, String email, MultipartFile file) {
+	public int insertUser(String loginId, String password, String nickName, String address, String email, MultipartFile file) {
 		String imagePath = null;
 		if (file != null) {
 			try {
@@ -39,7 +39,7 @@ public class UserBO {
 		if (imagePath == null) {
 			imagePath = "http://localhost/images/basic.jpg";
 		}
-		return userDAO.insertUser(loginId, password, nickname, address, email, imagePath);
+		return userDAO.insertUser(loginId, password, nickName, address, email, imagePath);
 	}
 	
 	public User getUser(String loginId, String password) {
