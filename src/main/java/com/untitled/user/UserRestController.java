@@ -71,7 +71,7 @@ public class UserRestController {
 			result.put("result", "success");
 			// 로그인 처리 - 세션에 저장(로그인 상태를 유지한다)
 			HttpSession session = request.getSession();
-			session.setAttribute("userLoginId", user.getLoginId());
+			session.setAttribute("userAddress", user.getAddress());
 			session.setAttribute("userName", user.getNickName());	
 			session.setAttribute("userId", user.getId());	
 		} else {
