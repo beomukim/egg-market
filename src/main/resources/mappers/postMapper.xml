@@ -16,7 +16,7 @@
 			, `updatedAt`
 		FROM
 			`post`
-		WHERE
-			`title` LIKE '%#{search}%';
+		ORDER BY
+			`viewCount`
  	</select>
  </mapper>

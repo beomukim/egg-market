@@ -67,6 +67,9 @@
 			// $('#sort').val(sort).prop('selected', true); -> 작동 안함
 		})
 		$('#sort').val('${sort}').prop('selected', true); // GET방식으로 queryParameter를 받아서 구현
+		if ('${sort}' == '') {
+			$('#sort').val('인기순');
+		}
 		
 	});
 </script>

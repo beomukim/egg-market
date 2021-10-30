@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.untitled.post.bo.ArticleBO;
@@ -20,7 +20,7 @@ public class PostController {
 	@Autowired
 	private ArticleBO articleBO;
 	
-	@RequestMapping("/post")
+	@GetMapping("/post")
 	public String postList(@RequestParam(value=	"search", required=false) String search,
 			@RequestParam(value="sort", required=false) String sort,
 			Model model) {
@@ -28,7 +28,7 @@ public class PostController {
 		model.addAttribute("sort", sort);
 		
 		List<Article> ArticleList = articleBO.getArticleList(search, sort);
-		model.addAttribute("ArticleList", ArticleList);
+		model.addAttribute("articleList", ArticleList);
 		
 		return "template/layout";
 	}

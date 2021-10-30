@@ -53,7 +53,7 @@
 			`loginId` = #{loginId}
 			AND `password` = #{password}
 	</select>
-	<select id="selectUserByPostId" parameterType="int" resultType="com.untitled.user.model.User">
+	<select id="selectUserByUserId" parameterType="int" resultType="com.untitled.user.model.User">
 		SELECT
 			`id` 
 			,`loginId`
