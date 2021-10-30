@@ -16,7 +16,14 @@
 			, `updatedAt`
 		FROM
 			`post`
+		<if test='sort.equals("인기순")'>
 		ORDER BY
 			`viewCount`
+		</if>
+		<if test='sort.equals("최신순")'>
+		ORDER BY
+			`id` DESC;
+		</if>
+		
  	</select>
  </mapper>
