@@ -2,6 +2,9 @@ package com.untitled.post;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +32,19 @@ public class PostController {
 		
 		List<Article> ArticleList = articleBO.getArticleList(search, sort);
 		model.addAttribute("articleList", ArticleList);
+		
+		return "template/layout";
+	}
+	
+	@GetMapping("post/write")
+	public String postWrite(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		Integer userId = (Integer) session.getAttribute("userId");
+		if (userId == null) {
+			return "redirect:/user/login";
+		}
+		
+		model.addAttribute("viewName", "post/write");
 		
 		return "template/layout";
 	}

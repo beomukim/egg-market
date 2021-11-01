@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<th>* 닉네임</th>
-					<td><input type="text" id="nickname" name="nickname" class="form-control"></td>
+					<td><input type="text" id="nickName" name="nickName" class="form-control"></td>
 				</tr>
 				<tr>
 					<th>* 주소</th>
@@ -149,8 +149,8 @@ $(document).ready(function() {
 			return;
 		}
 		
-		var nickname = $('#nickname').val().trim();
-		if (nickname == '') {
+		var nickName = $('#nickName').val().trim();
+		if (nickName == '') {
 			alert("닉네임을 입력하세요.");
 			return;
 		}
@@ -180,7 +180,7 @@ $(document).ready(function() {
 		var formData = new FormData(); // form 객체를 만든다. form 자체와는 달라서 seralize 안해도 된다.
 		formData.append("loginId", loginId);
 		formData.append("password", password);
-		formData.append("nickname", nickname);
+		formData.append("nickName", nickName);
 		formData.append("address", address);
 		formData.append("email", email);
 		formData.append("file", $("#file")[0].files[0]); // 파일을 가져온다. 없으면 null
@@ -194,7 +194,7 @@ $(document).ready(function() {
             contentType: false,				// 파일 업로드를 위한 필수 설정
 			success: function(data) {
 				if (data.result == 'success') {
-					location.reload(); // 새로고침
+					location.href = '/post';
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {

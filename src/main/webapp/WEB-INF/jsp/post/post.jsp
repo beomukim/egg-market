@@ -48,7 +48,7 @@
 		<hr>
 		<div class="d-flex justify-content-end">
 			<div>
-				<a href="/post/write" class="btn btn-success">글쓰기</a>
+				<a href="/post/write" class="btn btn-success" id="write-btn">글쓰기</a>
 			</div>
 		</div>
 	</div>
@@ -70,6 +70,10 @@
 		if ('${sort}' == '') {
 			$('#sort').val('인기순');
 		}
+		$("#write-btn").on('click', function() {
+			location.href = '/post/write';
+			
+		});
 		
 	});
 </script>
