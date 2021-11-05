@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.untitled.post.bo.ArticleBO;
@@ -47,5 +48,12 @@ public class PostController {
 		model.addAttribute("viewName", "post/write");
 		
 		return "template/layout";
+	}
+	
+	@GetMapping("post/{postId}")
+	public String postDetail(@PathVariable("postId") int postId, Model model) {
+		model.addAttribute("viewName", "post/content");
+		return "template/layout";
+		
 	}
 }

@@ -28,20 +28,20 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${articleList}" var="article">
-					<tr>
-						<td>
-							<div class="d-flex">
-								<div>
-									<img src="${article.user.imagePath}" width=50>
+						<tr class="detailPost" data-post-id="${article.post.id}">
+							<td>
+								<div class="d-flex">
+									<div>
+										<img src="${article.user.imagePath}" width=50>
+									</div>
+									<div class="ml-2">
+										${article.user.nickName}<br>${article.user.address}
+									</div>
 								</div>
-								<div class="ml-2">
-									${article.user.nickName}<br>${article.user.address}
-								</div>
-							</div>
-						</td>
-						<td>${article.post.title}</td>
-						<td>${article.post.price}</td>
-					</tr>
+							</td>
+							<td>${article.post.title}</td>
+							<td>${article.post.price}</td>
+						</tr>
 				</c:forEach>
 			</tbody>
 		</table>
@@ -59,21 +59,30 @@
 		$("#search-btn").on('click', function() {
 			let search = $('#search').val().trim();
 			location.href = '/post?search=' + search;
-			
+
 		});
+		
 		$('#sort').on('change', function() {
 			let sort = $('#sort option:selected').val();
 			location.href = '/post?sort=' + sort;
 			// $('#sort').val(sort).prop('selected', true); -> 작동 안함
-		})
+		});
+		
 		$('#sort').val('${sort}').prop('selected', true); // GET방식으로 queryParameter를 받아서 구현
 		if ('${sort}' == '') {
 			$('#sort').val('인기순');
-		}
+		};
+		
 		$("#write-btn").on('click', function() {
 			location.href = '/post/write';
-			
 		});
 		
+		$(".detailPost").on('click', function() {
+			location.href = '/post/' + $(this).data('post-id');
+		})
+		
+		
+		
+
 	});
 </script>
