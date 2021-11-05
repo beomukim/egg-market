@@ -53,6 +53,10 @@ public class PostController {
 	@GetMapping("post/{postId}")
 	public String postDetail(@PathVariable("postId") int postId, Model model) {
 		model.addAttribute("viewName", "post/content");
+		
+		Article article = articleBO.getArticle(postId);
+		model.addAttribute("article", article);
+		
 		return "template/layout";
 		
 	}

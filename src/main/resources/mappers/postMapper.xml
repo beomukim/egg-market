@@ -25,10 +25,6 @@
 			`id` DESC;
 		</if>
 		
-		
-		
-		
-		
  	</select>
  	<insert id="insertPost" parameterType="map">
 		INSERT INTO `post`
@@ -52,4 +48,21 @@
 			, NOW()
 		)
 	</insert>
+	
+	<select id="selectPost" resultType="com.untitled.post.model.Post">
+		SELECT
+			`id` 
+			,`userId`
+			, `title`
+			, `content`
+			, `imagePath`
+			, `price`
+			, `viewCount`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		WHERE
+			`id` = #{postId};
+	</select>
  </mapper>

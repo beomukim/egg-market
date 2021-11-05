@@ -36,4 +36,15 @@ public class ArticleBO {
 		
 		return articleList;
 	}
+	
+	public Article getArticle(int postId) {
+		Article article = new Article();
+		Post post = postBO.getPost(postId);
+		article.setPost(post);
+		
+		User user = userBO.getUserByUserId(post.getUserId());
+		article.setUser(user);
+		
+		return article;
+	}
 }

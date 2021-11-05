@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="d-flex justify-content-center">
 	<div>
 		<section id="article-images" class="mt-3">
-			<img
-				src="https://dnvefa72aowie.cloudfront.net/hoian/category/thumbnails/v2/img_thumb_book.png" />
+			<img src="${article.post.imagePath}" width="300"/>
 		</section>
 
 		<section class="mt-3">
 			<div class="d-flex">
-				<img
-					src="https://d1unjqcospf8gs.cloudfront.net/assets/users/default_profile_80-7e50c459a71e0e88c474406a45bbbdce8a3bf2ed4f2efcae59a064e39ea9ff30.png" />
+				<img src="${article.user.imagePath}" width="50"/>
 				<div class="p-3">
-					<div id="nickname">안녕</div>
-					<div id="region-name">중구 성내1동</div>
+					<div>${article.user.nickName}</div>
+					<div id="region-name">${article.user.address}</div>
 				</div>
 			</div>
 
@@ -21,9 +20,9 @@
 		<hr>
 
 		<section class="mt-3">
-			<h1>신세계 상품권</h1>
-			<p>쓸때가 없어서 싸게 팔아요 연락주세요</p>
-			<p>조회 156</p>
+			<h1>${article.post.title }</h1>
+			<p>${article.post.content }</p>
+			<p>조회수 ${article.post.viewCount }</p>
 		</section>
 		</article>
 		<div>

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.untitled.common.FileManagerService;
 import com.untitled.post.dao.PostDAO;
+import com.untitled.post.model.Article;
 import com.untitled.post.model.Post;
 
 @Service
@@ -39,5 +40,9 @@ public class PostBO {
 		}
 		
 		return postDAO.insertPost(userId, title, content, price, imagePath);
+	}
+	
+	public Post getPost(int postId) {
+		return postDAO.selectPost(postId);
 	}
 }
