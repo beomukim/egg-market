@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.untitled.comment.bo.CommentBO;
+import com.untitled.comment.model.Comment;
 import com.untitled.post.model.Article;
 import com.untitled.post.model.Post;
 import com.untitled.user.bo.UserBO;
@@ -19,6 +21,9 @@ public class ArticleBO {
 	
 	@Autowired
 	private UserBO userBO;
+	
+	@Autowired
+	private CommentBO commentBO;
 	
 	public List<Article> getArticleList(String search, String sort) {
 		List<Article> articleList = new ArrayList<>();
@@ -44,6 +49,9 @@ public class ArticleBO {
 		
 		User user = userBO.getUserByUserId(post.getUserId());
 		article.setUser(user);
+		
+		List<Comment> commentList = commentBO.getCommentList(post.getId());
+		article.setCommentList(commentList);
 		
 		return article;
 	}

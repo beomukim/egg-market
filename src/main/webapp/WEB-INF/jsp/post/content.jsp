@@ -4,12 +4,12 @@
 <div class="d-flex justify-content-center">
 	<div>
 		<section id="article-images" class="mt-3">
-			<img src="${article.post.imagePath}" width="300"/>
+			<img src="${article.post.imagePath}" width="400" />
 		</section>
 
 		<section class="mt-3">
 			<div class="d-flex">
-				<img src="${article.user.imagePath}" width="50"/>
+				<img src="${article.user.imagePath}" width="50" />
 				<div class="p-3">
 					<div>${article.user.nickName}</div>
 					<div id="region-name">${article.user.address}</div>
@@ -30,17 +30,25 @@
 		</div>
 		<hr>
 		<div class="m-2">
-			<c:forEach var="comment" items="${content.commentList}">
+			<c:forEach var="comment" items="${article.commentList}">
 				<div class="m-1">
-					<span class="font-weight-bold">${comment.userName} : </span> <span>${comment.content}</span>
+					<div class="d-flex">
 
-					<c:if test="${userName eq comment.userName}">
+						<img src="${article.user.imagePath}" width="35" />
+						<div class="font-weight-bold p-1">${comment.userNickName}</div>
+
+						<div class="d-flex align-items-center">
+							<div class="ml-5">${comment.content}</div>
+						</div>
+					</div>
+					<c:if test="${userId eq comment.userId}">
 						<a href="#" class="commentDelBtn" data-comment-id="${comment.id}">
 							<img src="https://www.iconninja.com/files/603/22/506/x-icon.png"
 							width="10px" height="10px">
 						</a>
 					</c:if>
 				</div>
+				<hr>
 			</c:forEach>
 		</div>
 	</div>

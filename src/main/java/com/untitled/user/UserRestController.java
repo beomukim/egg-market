@@ -73,6 +73,7 @@ public class UserRestController {
 			HttpSession session = request.getSession();
 			session.setAttribute("userLoginId", user.getLoginId());	
 			session.setAttribute("userId", user.getId());	
+			session.setAttribute("userNickName", user.getNickName());	
 		} else {
 			result.put("error", "입력 실패");
 		}

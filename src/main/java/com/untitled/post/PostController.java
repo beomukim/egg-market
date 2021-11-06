@@ -20,23 +20,22 @@ import com.untitled.post.model.Article;
 public class PostController {
 	@Autowired
 	private PostBO postBO;
-	
+
 	@Autowired
 	private ArticleBO articleBO;
-	
+
 	@GetMapping("/post")
-	public String postList(@RequestParam(value=	"search", required=false) String search,
-			@RequestParam(value="sort", required=false) String sort,
-			Model model) {
+	public String postList(@RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "sort", required = false) String sort, Model model) {
 		model.addAttribute("viewName", "post/post");
 		model.addAttribute("sort", sort);
-		
+
 		List<Article> ArticleList = articleBO.getArticleList(search, sort);
 		model.addAttribute("articleList", ArticleList);
-		
+
 		return "template/layout";
 	}
-	
+
 	@GetMapping("post/write")
 	public String postWrite(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
@@ -44,20 +43,25 @@ public class PostController {
 		if (userId == null) {
 			return "redirect:/user/login";
 		}
-		
+
 		model.addAttribute("viewName", "post/write");
-		
+
 		return "template/layout";
 	}
-	
+
 	@GetMapping("post/{postId}")
-	public String postDetail(@PathVariable("postId") int postId, Model model) {
+	public String postDetail(@PathVariable("postId") int postId, Model model, HttpServletRequest request) {
 		model.addAttribute("viewName", "post/content");
-		
+
 		Article article = articleBO.getArticle(postId);
 		model.addAttribute("article", article);
 		
+		HttpSession session = request.getSession();
+		Integer userId = (Integer) session.getAttribute("userId");
+		model.addAttribute("userId", userId);
+
 		return "template/layout";
-		
+
 	}
+
 }
