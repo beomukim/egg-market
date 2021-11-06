@@ -21,4 +21,8 @@ public interface PostDAO {
 			@Param("imagePath") String imagePath);
 	
 	public Post selectPost(int postId);
+	
+	public void setViewCount(
+			@Param("postId") int postId,
+			@Param("viewCount") int viewPoint);
 }

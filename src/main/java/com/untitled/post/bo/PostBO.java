@@ -45,4 +45,9 @@ public class PostBO {
 	public Post getPost(int postId) {
 		return postDAO.selectPost(postId);
 	}
+	
+	
+	public void setViewCount(int postId, int viewCount) {
+		postDAO.setViewCount(postId, viewCount);
+	}
 }

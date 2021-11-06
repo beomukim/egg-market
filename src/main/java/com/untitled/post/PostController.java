@@ -59,7 +59,10 @@ public class PostController {
 		HttpSession session = request.getSession();
 		Integer userId = (Integer) session.getAttribute("userId");
 		model.addAttribute("userId", userId);
-
+		
+		int viewCount = article.getPost().getViewCount();
+		viewCount++;
+		postBO.setViewCount(postId, viewCount);
 		return "template/layout";
 
 	}

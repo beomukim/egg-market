@@ -65,4 +65,15 @@
 		WHERE
 			`id` = #{postId};
 	</select>
+	
+	<update id="setViewCount" parameterType="map">
+		UPDATE
+			`post`
+		SET
+			`viewCount` = #{viewCount}
+		WHERE
+			`id` = #{postId};
+	</update>
+	
+	
  </mapper>
