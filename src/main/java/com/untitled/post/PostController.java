@@ -26,7 +26,15 @@ public class PostController {
 
 	@GetMapping("/post")
 	public String postList(@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "sort", required = false) String sort, Model model) {
+			@RequestParam(value = "sort", required = false) String sort,
+			HttpServletRequest request, 
+			Model model) {
+		HttpSession session = request.getSession();
+		Integer userId = (Integer) session.getAttribute("userId");
+		if (userId == null) {
+			return "redirect:/user/login";
+		}
+		
 		model.addAttribute("viewName", "post/post");
 		model.addAttribute("sort", sort);
 
@@ -58,6 +66,9 @@ public class PostController {
 		
 		HttpSession session = request.getSession();
 		Integer userId = (Integer) session.getAttribute("userId");
+		if (userId == null) {
+			return "redirect:/user/login";
+		}
 		model.addAttribute("userId", userId);
 		
 		int viewCount = article.getPost().getViewCount();

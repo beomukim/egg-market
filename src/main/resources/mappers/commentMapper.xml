@@ -17,4 +17,25 @@
 	 	WHERE
 	 		postId = ${postId}
 	</select>
+	
+	<insert id="insertComment" parameterType="map">
+		INSERT INTO `comment`
+		(
+			`postId`
+	 		, `userId`
+	 		, `userNickName`
+	 		, `content`
+	 		, `createdAt`
+	 		, `updatedAt`
+		)
+		VALUES 
+		(
+			#{postId}
+			, #{userId}
+			, #{userNickName}
+			, #{content}
+			, NOW()
+			, NOW()
+		)
+	</insert>
  </mapper>
