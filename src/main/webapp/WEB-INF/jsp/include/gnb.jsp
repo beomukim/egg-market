@@ -10,5 +10,13 @@
 	<div>계란마켓</div>
 </div>
 
+<script>
+	$(document).ready(function() {
+		$('#logo').on('click', function() {
+			location.href = '/';
+		});
+	});
+</script>
+
 
 
