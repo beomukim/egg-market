@@ -25,10 +25,10 @@ public class ArticleBO {
 	@Autowired
 	private CommentBO commentBO;
 	
-	public List<Article> getArticleList(String search, String sort) {
+	public List<Article> getArticleList(String sort) {
 		List<Article> articleList = new ArrayList<>();
 		
-		List<Post> postList = postBO.getPostList(search, sort);
+		List<Post> postList = postBO.getPostList(sort);
 		for (Post post : postList) {
 			Article article = new Article();
 			article.setPost(post);
@@ -54,5 +54,22 @@ public class ArticleBO {
 		article.setCommentList(commentList);
 		
 		return article;
+	}
+	
+	public List<Article> getArticleListBySearch(String search) {
+		List<Article> articleList = new ArrayList<>();
+		
+		List<Post> postList = postBO.getPostListBySearch(search);
+		for (Post post : postList) {
+			Article article = new Article();
+			article.setPost(post);
+			
+			User user = userBO.getUserByUserId(post.getUserId());
+			article.setUser(user);
+			
+			articleList.add(article);
+		}
+		
+		return articleList;
 	}
 }

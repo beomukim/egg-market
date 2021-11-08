@@ -25,8 +25,7 @@ public class PostController {
 	private ArticleBO articleBO;
 
 	@GetMapping("/post")
-	public String postList(@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "sort", required = false) String sort,
+	public String postList(@RequestParam(value = "sort", required = false) String sort,
 			HttpServletRequest request, 
 			Model model) {
 		HttpSession session = request.getSession();
@@ -38,7 +37,7 @@ public class PostController {
 		model.addAttribute("viewName", "post/post");
 		model.addAttribute("sort", sort);
 
-		List<Article> ArticleList = articleBO.getArticleList(search, sort);
+		List<Article> ArticleList = articleBO.getArticleList(sort);
 		model.addAttribute("articleList", ArticleList);
 
 		return "template/layout";
@@ -76,6 +75,24 @@ public class PostController {
 		postBO.setViewCount(postId, viewCount);
 		return "template/layout";
 
+	}
+	
+	@GetMapping("/post/search/{search}")
+	public String postListBySearch(@PathVariable("search") String search,
+			HttpServletRequest request, 
+			Model model) {
+		HttpSession session = request.getSession();
+		Integer userId = (Integer) session.getAttribute("userId");
+		if (userId == null) {
+			return "redirect:/user/login";
+		}
+		
+		model.addAttribute("viewName", "post/post");
+
+		List<Article> articleList = articleBO.getArticleListBySearch(search);
+		model.addAttribute("articleList", articleList);
+
+		return "template/layout";
 	}
 
 }

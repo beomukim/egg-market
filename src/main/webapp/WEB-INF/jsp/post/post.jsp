@@ -22,7 +22,7 @@
 			<thead>
 				<tr>
 					<th>작성자</th>
-					<th>물건</th>
+					<th>제목</th>
 					<th>가격</th>
 				</tr>
 			</thead>
@@ -58,7 +58,7 @@
 	$(document).ready(function() {
 		$("#search-btn").on('click', function() {
 			let search = $('#search').val().trim();
-			location.href = '/post?search=' + search;
+			location.href = '/post/search/' + search;
 
 		});
 		

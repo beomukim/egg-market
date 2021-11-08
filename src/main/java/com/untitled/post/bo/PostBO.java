@@ -24,8 +24,8 @@ public class PostBO {
 	@Autowired
 	private FileManagerService fileManagerService;
 	
-	public List<Post> getPostList(String search, String sort) {
-		return postDAO.selectPostList(search, sort);
+	public List<Post> getPostList(String sort) {
+		return postDAO.selectPostList(sort);
 	}
 
 	public int createPost(String loginId, int userId, String title, String content, String price,
@@ -49,5 +49,9 @@ public class PostBO {
 	
 	public void setViewCount(int postId, int viewCount) {
 		postDAO.setViewCount(postId, viewCount);
+	}
+	
+	public List<Post> getPostListBySearch(String search) {
+		return postDAO.selectPostListBySearch(search);
 	}
 }

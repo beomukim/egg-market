@@ -9,9 +9,7 @@ import com.untitled.post.model.Post;
 
 @Repository
 public interface PostDAO {
-	public List<Post> selectPostList(
-			@Param("search") String search, 
-			@Param("sort") String sort);
+	public List<Post> selectPostList(String sort);
 
 	public int insertPost(
 			@Param("userId") int userId,
@@ -25,4 +23,6 @@ public interface PostDAO {
 	public void setViewCount(
 			@Param("postId") int postId,
 			@Param("viewCount") int viewPoint);
+	
+	public List<Post> selectPostListBySearch(String search);
 }
