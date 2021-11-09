@@ -24,10 +24,11 @@
 		ORDER BY
 			`id` DESC;
 		</if> 
-		<!-- 
-		<if test="search != null">
-			WHERE `title` LIKE CONCAT('%',#{search},'%');
-		</if> -->
+		<if test="sort == '가격순'">
+		ORDER BY
+			`price` DESC;
+		</if> 
+		
 
  	</select>
  	<insert id="insertPost" parameterType="map">
@@ -94,6 +95,7 @@
 			`post`
 		WHERE 
 			`title` LIKE CONCAT('%',#{search},'%');
+		
 
  	</select>
 	

@@ -16,4 +16,6 @@ public interface CommentDAO {
 			@Param("userId") int userId, 
 			@Param("userNickName") String userNickName, 
 			@Param("content") String content);
+	
+	public void deleteComment(int id);
 }

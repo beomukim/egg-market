@@ -49,4 +49,15 @@ public class CommentRestController {
 		}
 		return result;
 	}
+	
+	@RequestMapping("/delete")
+	public Map<String, Object> delete(
+			@RequestParam("commentId") int commentId) {
+		
+		Map<String, Object> result = new HashMap<>();
+		commentBO.deleteComment(commentId);
+		
+		result.put("result", "success");
+		return result;
+	}
 }

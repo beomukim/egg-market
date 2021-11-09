@@ -20,4 +20,8 @@ public class CommentBO {
 	public int createComment(int postId, int userId, String userNickName, String content) {
 		return commentDAO.insertComment(postId, userId, userNickName, content);
 	}
+	
+	public void deleteComment(int id) {
+		commentDAO.deleteComment(id);
+	}
 }

@@ -11,8 +11,8 @@
 			<div class="d-flex">
 				<img src="${article.user.imagePath}" width="50" />
 				<div class="p-3">
-					<div>${article.user.nickName}</div>
-					<div id="region-name">${article.user.address}</div>
+					<div class="font-weight-bold">${article.user.nickName}</div>
+					<div id="region-name" class="font-weight-bold">${article.user.address}</div>
 				</div>
 			</div>
 
@@ -32,11 +32,10 @@
 		<div class="m-2">
 			<c:forEach var="comment" items="${article.commentList}">
 				<div class="m-1">
-					<div class="d-flex">
-
+					<div class="d-flex commentBox"
+						data-nickname="${comment.userNickName}">
 						<img src="${article.user.imagePath}" width="35" />
 						<div class="font-weight-bold p-1">${comment.userNickName}</div>
-
 						<div class="d-flex align-items-center">
 							<div class="ml-5">${comment.content}</div>
 						</div>
@@ -56,7 +55,8 @@
 		<div class="d-flex justify-content-end">
 			<div class="mt-2">
 				<button id="postListBtn" class="btn btn-success float-left">목록</button>
-				<button id="saveBtn" class="btn btn-success ml-2" data-post-id="${article.post.id}">입력</button>
+				<button id="saveBtn" class="btn btn-success ml-2"
+					data-post-id="${article.post.id}">입력</button>
 			</div>
 		</div>
 	</div>
@@ -65,37 +65,68 @@
 <script>
 	$(document).ready(function() {
 		$('#postListBtn').on('click', function() {
-			location.href="/post";
+			location.href = "/post";
 		});
-		
+
 		$('#saveBtn').on('click', function(e) {
 			e.preventDefault();
 			var postId = $(this).data('post-id');
-			console.log(postId);
-			
+
 			var commentText = $('#comment').val().trim();
 			console.log(commentText);
 			if (commentText.length < 1) {
 				alert("댓글 내용을 입력해주세요.");
 				return;
 			}
-			
+
 			$.ajax({
-				type:'POST',
-				url:'/comment/write',
-				data: {"postId":postId, "content":commentText},
-				success: function(data) {
+				type : 'POST',
+				url : '/comment/write',
+				data : {
+					"postId" : postId,
+					"content" : commentText
+				},
+				success : function(data) {
 					if (data.result == 'success') {
-						alert("댓글을 작성했습니다!");
 						location.reload(); // 새로고침
 					}
 				},
-				error: function(jqXHR, textStatus, errorThrown) {
+				error : function(jqXHR, textStatus, errorThrown) {
 					var errorMsg = jqXHR.responseJSON.status;
 					alert(errorMsg + ":" + textStatus);
 				}
 			});
-			
+
+		});
+
+		$('.commentBox').on('click', function(e) {
+			e.preventDefault();
+
+			var nickname = $(this).data("nickname");
+			$('#comment').val('@' + nickname + ' ');
+		})
+
+		$('.commentDelBtn').on('click', function(e) {
+			e.preventDefault();
+
+			var commentId = $(this).data("comment-id");
+
+			$.ajax({
+				type : 'POST',
+				url : '/comment/delete',
+				data : {
+					"commentId" : commentId
+				},
+				success : function(data) {
+					if (data.result == 'success') {
+						location.reload(); // 새로고침
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					var errorMsg = jqXHR.responseJSON.status;
+					alert(errorMsg + ":" + textStatus);
+				}
+			});
 		});
 	});
 </script>
