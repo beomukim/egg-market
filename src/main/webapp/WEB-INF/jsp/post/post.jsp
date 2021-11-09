@@ -14,6 +14,7 @@
 				<select id="sort" class="form-control">
 					<option>최신순</option>
 					<option>인기순</option>
+					<option>가격순</option>
 				</select>
 			</div>
 		</div>
@@ -58,8 +59,10 @@
 	$(document).ready(function() {
 		$("#search-btn").on('click', function() {
 			let search = $('#search').val().trim();
-			location.href = '/post/search/' + search;
-
+			if (search != '') {
+				location.href = '/post/search/' + search;
+			}
+			
 		});
 		
 		$('#sort').on('change', function() {
