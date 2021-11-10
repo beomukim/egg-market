@@ -25,4 +25,6 @@ public interface PostDAO {
 			@Param("viewCount") int viewPoint);
 	
 	public List<Post> selectPostListBySearch(String search);
+	
+	public int deletePost(int id);
 }

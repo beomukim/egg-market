@@ -46,6 +46,25 @@ public class PostBO {
 		return postDAO.selectPost(postId);
 	}
 	
+	public int deletePost(int id) {
+		// 파일이 있으면 파일도 삭제한다.
+		Post post = getPost(id);
+		if (post == null) {
+			logger.warn("[update post] 수정할 메모가 존재하지 않습니다.");
+			return 0;
+		}
+		
+		if (post.getImagePath() != null) {
+			try {
+				fileManagerService.deleteFile(post.getImagePath());
+			} catch (IOException e) {
+				logger.error("[파일 삭제중 에러] " + e.getMessage());
+			}
+		}
+		
+		return postDAO.deletePost(id);
+	}
+	
 	
 	public void setViewCount(int postId, int viewCount) {
 		postDAO.setViewCount(postId, viewCount);

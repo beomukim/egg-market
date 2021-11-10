@@ -45,4 +45,18 @@ public class PostRestController {
 		return result;
 	}
 	
+	@RequestMapping("/delete")
+	public Map<String, Object> delete(
+			@RequestParam("postId") int postId) {
+		
+		Map<String, Object> result = new HashMap<>();
+		int row = postBO.deletePost(postId);
+		if (row > 0) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "error");
+		}
+		return result;
+	}
+	
 }
