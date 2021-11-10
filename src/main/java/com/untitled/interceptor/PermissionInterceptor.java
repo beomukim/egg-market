@@ -20,16 +20,16 @@ public class PermissionInterceptor implements HandlerInterceptor {
 
 		// 세션이 있는지 확인한다. => 있으면 로그인 된 상태
 		HttpSession session = request.getSession();
-		String userLoginId = (String) session.getAttribute("userLoginId");
+		Integer userId = (Integer) session.getAttribute("userId");
 		
 		// URI 확인(url path를 가져온다.)
 		String uri = request.getRequestURI();
 		
-		if (userLoginId == null && uri.startsWith("/post")) {
+		if (userId == null && uri.startsWith("/post")) {
 			// 비로그인 && 접근을 시도한 uri path가 /post 이면 로그인 페이지로 리다이렉트
 			response.sendRedirect("/user/login");
 			return false;
-		} else if (userLoginId != null && uri.startsWith("/user")) {
+		} else if (userId != null && uri.startsWith("/user")) {
 			// 로그인 && 접근을 시도한 uri path가 /user 이면 게시판으로 리다이렉트
 			response.sendRedirect("/post");
 			return false;

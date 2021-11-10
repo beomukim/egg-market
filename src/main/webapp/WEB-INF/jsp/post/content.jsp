@@ -57,6 +57,11 @@
 				<button id="postListBtn" class="btn btn-success float-left">목록</button>
 				<button id="saveBtn" class="btn btn-success ml-2"
 					data-post-id="${article.post.id}">입력</button>
+				<c:if test="${userId eq article.user.id}">
+					<button id="deleteBtn" class="btn btn-success ml-2"
+						data-post-id="${article.post.id}" data-post-id="${article.post.id}">삭제</button>
+				</c:if>
+
 			</div>
 		</div>
 	</div>
@@ -125,6 +130,25 @@
 				error : function(jqXHR, textStatus, errorThrown) {
 					var errorMsg = jqXHR.responseJSON.status;
 					alert(errorMsg + ":" + textStatus);
+				}
+			});
+		});
+		$('#deleteBtn').on('click', function() {
+			var postId = $(this).data('post-id');
+			
+			// AJAX 통신으로 삭제 요청
+			$.ajax({
+				url: '/post/delete',
+				method: 'POST',
+				data: {'postId':postId},
+				success: function(data) {
+					if (data.result == 'success') {
+						alert("삭제되었습니다.");
+						location.href = "/post";
+					}
+				},
+				error: function(e) {
+					alert("메모를 삭제하는데 실패했습니다. 관리자에게 문의해주세요.");
 				}
 			});
 		});
